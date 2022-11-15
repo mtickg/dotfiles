@@ -1,0 +1,238 @@
+# Wait 10 milliseconds for starship to check files under the current directory.
+scan_timeout = 10
+
+# Disable the blank line at the start of the prompt
+add_newline = false
+
+format = """
+$username\
+$hostname\
+$localip\
+$shlvl\
+$directory\
+$vcsh\
+$hg_branch\
+$docker_context\
+$package\
+$fill\
+$time\
+$container\
+$c\
+$cmake\
+$java\
+$julia\
+$kotlin\
+$lua\
+$nodejs\
+$perl\
+$php\
+$python\
+$ruby\
+$rust\
+$memory_usage\
+[ ]()\
+\n\
+[]()\
+$env_var\
+$custom\
+$sudo\
+$git_commit\
+$git_state\
+$git_metrics\
+$character\
+$jobs\
+$battery"""
+
+right_format = """
+$shell\
+[ ]()\
+$status\
+$git_status\
+$git_branch"""
+
+
+[fill]
+symbol = " "
+style = ""
+
+[username]
+style_user = "fg:#6C7A96 bold"
+style_root = "red bold"
+format = "[$user]($style) "
+disabled = false
+show_always = true
+
+[directory]
+fish_style_pwd_dir_length = 1
+truncation_length = 2
+truncation_symbol = "./"
+disabled = false
+home_symbol = "~"
+style = "white"
+
+[shell]
+disabled = false
+format = "[$indicator]($style)"
+style = "fg:#4c566a"
+
+[character]
+format = " $symbol "
+
+[hostname]
+ssh_only = true
+# ssh_symbol = "ssh  "
+ssh_symbol = ""
+#  
+trim_at = "."
+format = "[$hostname]($style) "
+disabled = false
+style = "fg:#c792ea"
+
+[git_branch]
+style = "green"
+format = "[($remote_branch:)](fg:white)[$branch](fg:green)"
+
+[git_status]
+disabled = false
+format = '  ([$all_status $ahead_behind]($style))'
+conflicted = "="
+ahead = "⇡${count}"
+diverged = "⇕[⇡${ahead_count}](fg:yellow)[⇣](fg:yellow)${behind_count}"
+behind = "[⇣](fg:orange)${count}"
+up_to_date = ""
+# up_to_date = "[](fg:green)"
+untracked =	"${count}[](fg:yellow)"
+stashed =	"${count}[$](fg:yellow)"
+modified = "${count}[](fg:white)"
+staged = "${count}[](fg:green)"
+renamed =	"${count}[»](fg:orange)"
+deleted =	"${count}[](fg:red)"
+style =	"yellow"
+ignore_submodules =	false
+
+[git_commit]
+commit_hash_length = 7
+format = '[\($hash$tag\)]($style) '
+only_detached = true
+tag_disabled = true
+tag_max_candidates = 0
+tag_symbol = "!"
+disabled = false
+
+[git_metrics]
+disabled = false
+added_style = "green"
+deleted_style = "red"
+only_nonzero_diffs = true
+format = "([+$added]($added_style) )([-$deleted]($deleted_style) )"
+
+[git_state]
+disabled = false
+
+[nodejs]
+format = "[$symbol( $version)]($style)"
+style = "fg:green bg:#353B49"
+symbol = " "
+
+[package]
+format = " [$symbol( $version)]($style)"
+style = "fg:yellow bg:#353B49"
+symbol = " "
+version_format = "v${major}"
+
+[python]
+symbol = " "
+style = "fg:yellow bg:#353B49"
+format = '[${symbol}${pyenv_prefix}(${ version})(\( $virtualenv\))]($style)'
+version_format = "v${major}"
+
+[ruby]
+symbol = " "
+style = "fg:red bg:#353B49"
+format = "[$symbol( $version)]($style)"
+version_format = "v${major}"
+
+[docker_context]
+symbol = " "
+format = "[$symbol$context]($style) "
+style = "fg:blue bg:#353B49"
+
+[localip]
+ssh_only = true
+format = "[$localipv4]($style) "
+style = "fg:yellow"
+disabled = true
+
+[cmd_duration]
+style = "#2A3440"
+format = " [$duration]($style)"
+
+[lua]
+symbol = " "
+style = "fg:blue bg:#353B49"
+format = "[$symbol($version )]($style)"
+version_format = "v${major}"
+
+[status]
+disabled = false
+format = "[$symbol]($style)"
+symbol = "[ $status](fg:red bold)"
+success_symbol = "[ $status](fg:fg:#4c566a)"
+not_executable_symbol = "[ $status](fg:red)"
+not_found_symbol = "[ $status](fg:yellow)"
+sigint_symbol = "[ $status](fg:yellow)"
+style = "fg:#4c566a"
+recognize_signal_code = true
+map_symbol = true
+pipestatus = true
+pipestatus_separator = "|"
+# pipestatus_format = '\[$pipestatus\] => [$symbol$common_meaning$signal_name$maybe_int]($style)'
+
+[aws]
+symbol = " "
+
+[buf]
+symbol = " "
+
+[c]
+symbol = " "
+
+[conda]
+symbol = " "
+
+[dart]
+symbol = ""
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[haskell]
+symbol = " "
+
+[hg_branch]
+symbol = " "
+
+[java]
+format = "[${symbol}]($style)"
+symbol = " "
+
+[julia]
+symbol = " "
+
+[memory_usage]
+symbol = " "
+
+[nim]
+symbol = " "
+
+[nix_shell]
+symbol = " "
+
+[spack]
+symbol = " 🅢"
+
+[rust]
+symbol = " "
